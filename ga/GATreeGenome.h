@@ -67,8 +67,6 @@ public:
     { _evaluated = gaFalse; return GATree<T>::insert(t, where); }
 };
 
-#ifdef GALIB_USE_BORLAND_INST
 #include <ga/GATreeGenome.C>
-#endif
 
 #endif

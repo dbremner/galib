@@ -426,9 +426,3 @@ GAListGenome<int>::write(ostream & os) const
 // force instantiations for compilers that do not do auto instantiation
 // for some compilers (e.g. metrowerks) this must come after any
 // specializations or you will get 'multiply-defined errors when you compile.
-#if !defined(GALIB_USE_AUTO_INST)
-#include <ga/GAList.C>
-#include <ga/GAListGenome.C>
-GALIB_INSTANTIATION_PREFIX GAList<int>;
-GALIB_INSTANTIATION_PREFIX GAListGenome<int>;
-#endif

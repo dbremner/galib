@@ -146,9 +146,7 @@ protected:
 };
 
 
-#ifdef GALIB_USE_BORLAND_INST
 #include <ga/GA2DArrayGenome.C>
-#endif
 
 #endif
 

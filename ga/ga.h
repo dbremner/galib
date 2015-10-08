@@ -163,7 +163,6 @@ one copy of the genome type you want to use.
 #include <ga/GA3DBinStrGenome.h>
 #include <ga/GABin2DecGenome.h>
 
-#ifndef GALIB_USE_NO_TEMPLATES
 #include <ga/GA1DArrayGenome.h>
 #include <ga/GA2DArrayGenome.h>
 #include <ga/GA3DArrayGenome.h>
@@ -175,6 +174,5 @@ one copy of the genome type you want to use.
 // compilers.
 //#include <ga/GAStringGenome.h>
 //#include <ga/GARealGenome.h>
-#endif
 
 #endif

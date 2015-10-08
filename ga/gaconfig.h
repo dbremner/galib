@@ -65,36 +65,6 @@ incorporate it into the code base.
                      Define this if the system has a getpid function that
                      returns something sane and useful.
 
-  GALIB_USE_NO_TEMPLATES
-
-                      For compilers that do not do templates.  The only type
-                      of genome available when this is defined is binary 
-                      string and any derived classes.  list, tree, and array 
-		      all use templates.  You can still use the template code,
-		      but you will have to hack it yourself to make it work.
-
-  GALIB_USE_BORLAND_INST
-
-                      For compilers that use the Borland instantiation model.
-                      These compilers expect all of the template code to be
-		      in the header file.  The Cfront model, on the other
-                      hand, expects source files with names similar to the
-		      header files, but all of the template code does not
-		      need to be in the header files.
-		    
-		      When you define this flag, the source file that 
-		      corresponds to the header file is explicitly included
-		      at the end of the header file for all headers that
-		      contain templates.
-
-  GALIB_USE_AUTO_INST
-
-                      For compilers that do not do automatic instantiation
-                      (such as g++ version 2.6.8) you will have to force
-                      instantiations.  When this flag is not defined, GAlib
-		      forces an instantiation of all of the template classes
-		      that it uses (such as real genome and string genome).
-
   GALIB_HAVE_NOT_ASSERT
 
                       Some platforms do not have assert.  So for those
@@ -250,8 +220,6 @@ incorporate it into the code base.
 // on other platforms yet).
 #if defined(__MWERKS__)
 #define GALIB_USE_STREAMS
-#define GALIB_USE_BORLAND_INST
-#define GALIB_USE_AUTO_INST
 #if __option(RTTI)
 #define GALIB_USE_RTTI
 #endif
@@ -263,14 +231,12 @@ incorporate it into the code base.
 // probably have to do some hacking to get things to work.
 #elif defined(__SC__)
 #define GALIB_USE_STREAMS
-#define GALIB_USE_BORLAND_INST
 
 
 // ----------------------------------------------------------------------------
 // THINK for mac
 #elif defined(THINK_C)
 #define GALIB_USE_STREAMS
-#define GALIB_USE_BORLAND_INST
 #define GALIB_USE_COMP_OPERATOR_TEMPLATES
 
 
@@ -292,7 +258,6 @@ incorporate it into the code base.
 #elif defined(__BORLANDC__)
 //#define GALIB_USE_RAND	// comment this if you're using a 32-bit OS
 #define GALIB_USE_RTTI
-#define GALIB_USE_BORLAND_INST
 #define GALIB_USE_STREAMS
 //#define GALIB_USE_PID
 #define GALIB_USE_EMPTY_TEMPLATES
@@ -314,20 +279,8 @@ incorporate it into the code base.
 //   vcpp7 (13.10.3077)
 //
 #elif defined(_MSC_VER)
-// visual studio uses the borland model of template instantiation.
-#define GALIB_USE_BORLAND_INST
-// let visual studio do its own instantations, so by default do not force them.
-#define GALIB_USE_AUTO_INST
-// use ansi headers with vcpp7.  it is a good idea to use them in vcpp6 as well
-// but some vcpp6 apps are built with non-ansi headers, in which case you 
-// should build with the non-ansi headers so that you do not cross the streams.
-#define GALIB_USE_ANSI_HEADERS
 // beware of using streams in an MFC application.  many nasties lurk therein...
 #define GALIB_USE_STREAMS
-// we default to using std things in the std namespace, but depending on the
-// version of vcpp you are using and depending on the libraries with which you
-// will use GAlib, you might have to turn this one off.
-#define GALIB_USE_STD_NAMESPACE
 // use the pid only on winnt and derivatives.  win95/98/ME do not have it.
 // this requires unistd.h, which you may or may not have (depending on the 
 // way that you installed the compiler).
@@ -362,14 +315,10 @@ incorporate it into the code base.
 // those affect us mostly with respect to the use of the std libraries.
 #elif defined(__GNUG__)
 #define GALIB_USE_RTTI
-#define GALIB_USE_BORLAND_INST
 #define GALIB_USE_STREAMS
 #define GALIB_USE_PID
 #define GALIB_USE_EMPTY_TEMPLATES
-#define GALIB_NEED_INSTANTIATION_PREFIX
 #if __GNUC__ > 2
-#define GALIB_USE_ANSI_HEADERS
-#define GALIB_USE_STD_NAMESPACE
 #define GALIB_USE_COMP_OPERATOR_TEMPLATES
 #endif
 
@@ -383,12 +332,9 @@ incorporate it into the code base.
 #include <sgidefs.h>
 #if (_MIPS_SIM == _MIPS_SIM_NABI32)
 #define GALIB_USE_RTTI
-#define GALIB_USE_AUTO_INST
-#define GALIB_USE_BORLAND_INST
 #elif (_MIPS_SIM == _MIPS_SIM_ABI64)
 #define GALIB_USE_RTTI
 #elif (_MIPS_SIM == _MIPS_SIM_ABI32)
-#define GALIB_USE_AUTO_INST
 #endif
 
 
@@ -398,11 +344,7 @@ incorporate it into the code base.
 // the -qrtti option turns rtti on and off, but i do not know the
 // corresponding preprocessor directive to sense it.
 #define GALIB_USE_RTTI
-#define GALIB_USE_BORLAND_INST
-#define GALIB_USE_AUTO_INST
-#define GALIB_USE_ANSI_HEADERS
 #define GALIB_USE_STREAMS
-#define GALIB_USE_STD_NAMESPACE
 #define GALIB_USE_PID
 #define GALIB_USE_NAMED_TEMPLATES
 
@@ -411,8 +353,6 @@ incorporate it into the code base.
 // HP aCC compiler
 #elif defined(__HP_aCC)
 #define GALIB_USE_RTTI
-#define GALIB_USE_BORLAND_INST
-#define GALIB_USE_AUTO_INST
 //#define GALIB_USE_ANSI_HEADERS
 #define GALIB_USE_STREAMS
 //#define GALIB_USE_STD_NAMESPACE
@@ -430,11 +370,7 @@ incorporate it into the code base.
 #error   Unknown/untested compiler/operating system!  Check these settings!
 
 #define GALIB_USE_RTTI
-#define GALIB_USE_BORLAND_INST
-#define GALIB_USE_AUTO_INST
-#define GALIB_USE_ANSI_HEADERS
 #define GALIB_USE_STREAMS
-#define GALIB_USE_STD_NAMESPACE
 #define GALIB_USE_PID
 #endif
 
@@ -466,11 +402,7 @@ incorporate it into the code base.
 
 
 // some compilers use one syntax, others use a different syntax.
-#if defined(GALIB_NEED_INSTANTIATION_PREFIX)
 #define GALIB_INSTANTIATION_PREFIX template class
-#else
-#define GALIB_INSTANTIATION_PREFIX
-#endif
 
 
 // If no RNG has been selected, use the ran2 generator by default

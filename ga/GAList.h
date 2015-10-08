@@ -190,8 +190,6 @@ private:
   friend class GAList<T>;	// do I need to do this?
 };
 
-#ifdef GALIB_USE_BORLAND_INST
 #include <ga/GAList.C>
-#endif
 
 #endif

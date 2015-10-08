@@ -64,8 +64,6 @@ public:
     { _evaluated = gaFalse; return GAList<T>::insert(t, where); }
 };
 
-#ifdef GALIB_USE_BORLAND_INST
 #include <ga/GAListGenome.C>
-#endif
 
 #endif

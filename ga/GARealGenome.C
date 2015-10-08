@@ -300,22 +300,3 @@ GARealBlendCrossover(const GAGenome& p1, const GAGenome& p2,
 // get all wigged out about the declaration/specialization order.  Note that
 // some compilers require a syntax different than others when forcing the 
 // instantiation (i.e. GNU wants the 'template class', borland does not).
-#ifndef GALIB_USE_AUTO_INST
-#include <ga/GAAllele.C>
-#include <ga/GA1DArrayGenome.C>
-
-#if defined(__BORLANDC__)
-#define GALIB_REALGENOME_TEMPLATE_PREFACE
-#else
-#define GALIB_REALGENOME_TEMPLATE_PREFACE template class
-#endif
-
-GALIB_REALGENOME_TEMPLATE_PREFACE GAAlleleSet<float>;
-GALIB_REALGENOME_TEMPLATE_PREFACE GAAlleleSetCore<float>;
-GALIB_REALGENOME_TEMPLATE_PREFACE GAAlleleSetArray<float>;
-
-GALIB_REALGENOME_TEMPLATE_PREFACE GAArray<float>;
-GALIB_REALGENOME_TEMPLATE_PREFACE GA1DArrayGenome<float>;
-GALIB_REALGENOME_TEMPLATE_PREFACE GA1DArrayAlleleGenome<float>;
-
-#endif

@@ -228,8 +228,6 @@ private:
 };
 
 
-#ifdef GALIB_USE_BORLAND_INST
 #include <ga/GATree.C>
-#endif
 
 #endif

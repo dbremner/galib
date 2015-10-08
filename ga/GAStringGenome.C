@@ -90,22 +90,3 @@ GA1DArrayAlleleGenome<char>::write(STD_OSTREAM & os) const
 // get all wigged out about the declaration/specialization order.  Note that
 // some compilers require a syntax different than others when forcing the 
 // instantiation (i.e. GNU wants the 'template class', borland does not).
-#ifndef GALIB_USE_AUTO_INST
-#include <ga/GAAllele.C>
-#include <ga/GA1DArrayGenome.C>
-
-#if defined(__BORLANDC__)
-#define GALIB_STRINGGENOME_TEMPLATE_PREFACE
-#else
-#define GALIB_STRINGGENOME_TEMPLATE_PREFACE template class
-#endif
-
-GALIB_STRINGGENOME_TEMPLATE_PREFACE GAAlleleSet<char>;
-GALIB_STRINGGENOME_TEMPLATE_PREFACE GAAlleleSetCore<char>;
-GALIB_STRINGGENOME_TEMPLATE_PREFACE GAAlleleSetArray<char>;
-
-GALIB_STRINGGENOME_TEMPLATE_PREFACE GAArray<char>;
-GALIB_STRINGGENOME_TEMPLATE_PREFACE GA1DArrayGenome<char>;
-GALIB_STRINGGENOME_TEMPLATE_PREFACE GA1DArrayAlleleGenome<char>;
-
-#endif
