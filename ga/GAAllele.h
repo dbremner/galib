@@ -140,10 +140,7 @@ public:
   int write(STD_OSTREAM & os) const;
 #endif
 
-#if defined(THINK_C)
-  friend operator==(const GAAlleleSet<T> &, const GAAlleleSet<T> &);
-  friend operator!=(const GAAlleleSet<T> &, const GAAlleleSet<T> &);
-#elif defined(GALIB_USE_EMPTY_TEMPLATES)
+#if defined(GALIB_USE_EMPTY_TEMPLATES)
   friend int operator==<>(const GAAlleleSet<T> &, const GAAlleleSet<T> &);
   friend int operator!=<>(const GAAlleleSet<T> &, const GAAlleleSet<T> &);
 #elif defined(GALIB_USE_NAMED_TEMPLATES)

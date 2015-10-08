@@ -229,32 +229,6 @@ incorporate it into the code base.
 // Symantec C++ for mac.  This compiler does not handle templates very well, 
 // so if you want to use any of the template components of GAlib then you will
 // probably have to do some hacking to get things to work.
-#elif defined(__SC__)
-#define GALIB_USE_STREAMS
-
-
-// ----------------------------------------------------------------------------
-// THINK for mac
-#elif defined(THINK_C)
-#define GALIB_USE_STREAMS
-#define GALIB_USE_COMP_OPERATOR_TEMPLATES
-
-
-// ----------------------------------------------------------------------------
-// borland c++ compiler
-//
-// You may or may not need the BORLAND_INST flag defined when you use a borland
-// compiler.  I did not need it when I compiled using version 4.0, but I did
-// need it when I compiled with an earlier version (I think it was 3.x but I
-// do not remember for certain).
-//   Note that the default random number generator when using a borland (or
-// any PC compiler, for that matter) is the basic system's RNG.
-// I did this because of the hassles of 16- vs 32-bit DOS/Windows rubbish.  If
-// you want a better RNG, you can use the others in GAlib, but you'll have to
-// do a bit of checking to make sure it works with your DOS/Windows config.
-// All of the RNGs work fine under all of the 32-bit OSes I've tried, but they
-// don't do so well in a 16-bit OS.
-//  Use the randtest example to check GAlib's RNG after you compile everything.
 #elif defined(__BORLANDC__)
 //#define GALIB_USE_RAND	// comment this if you're using a 32-bit OS
 #define GALIB_USE_RTTI
