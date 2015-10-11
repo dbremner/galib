@@ -26,12 +26,6 @@ the executable file might be covered by the GNU General Public License. */
 #include "bitprims.h"
 
 void
-/*
-_BS_set (ptr, offset, length)
-     register _BS_word *ptr;
-     int offset;
-     _BS_size_t length;
-*/
 _BS_set (register _BS_word *ptr,int offset,_BS_size_t length)
 {
 #undef DOIT

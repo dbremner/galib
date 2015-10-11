@@ -31,13 +31,6 @@ the executable file might be covered by the GNU General Public License. */
    Both bitstrings must be left-aligned. */
 
 int
-/*
-_BS_lcompare_0 (ptr0, len0, ptr1, len1)
-     register _BS_word *ptr0;
-     _BS_size_t len0;
-     register _BS_word *ptr1;
-     _BS_size_t len1;
-*/
 _BS_lcompare_0 (register _BS_word *ptr0,
 		_BS_size_t len0,
 		register _BS_word *ptr1,

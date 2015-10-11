@@ -31,15 +31,6 @@ the executable file might be covered by the GNU General Public License. */
    This will work even if psrc & pdst overlap. */
 
 void
-/*
-_BS_blt (op, pdst, dstbit, psrc, srcbit, length)
-     enum _BS_alu op;
-     register _BS_word* pdst;
-     int dstbit;
-     register const _BS_word* psrc;
-     int srcbit;
-     _BS_size_t length;
-*/
 _BS_blt (enum _BS_alu op,
 	 register _BS_word* pdst,
 	 int dstbit,

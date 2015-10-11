@@ -38,10 +38,6 @@ four_bit_count[16] = {
 #endif
 
 static inline int
-/*
-_BS_count_word (word)
-     register _BS_word word;
-*/
 _BS_count_word (register _BS_word word)
 {
   register int count = 0;
@@ -54,12 +50,6 @@ _BS_count_word (register _BS_word word)
 }
 
 int
-/*
-_BS_count (ptr, offset, length)
-     register const _BS_word *ptr;
-     int offset;
-     _BS_size_t length;
-*/
 _BS_count (register const _BS_word *ptr,
 	   int offset,
 	   _BS_size_t length)
