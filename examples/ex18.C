@@ -89,7 +89,7 @@ main(int argc, char *argv[])
         exit(1);
       }
       else{
-	sprintf(filename, argv[i]);
+	strcpy(filename, argv[i]);
         continue;
       }
     }

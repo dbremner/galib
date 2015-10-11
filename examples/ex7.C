@@ -68,7 +68,7 @@ main(int argc, char *argv[])
         exit(1);
       }
       else{
-	sprintf(datafile, argv[i]);
+	strcpy(datafile, argv[i]);
         continue;
       }
     }
@@ -78,7 +78,7 @@ main(int argc, char *argv[])
         exit(1);
       }
       else{
-	sprintf(parmfile, argv[i]);
+	strcpy(parmfile, argv[i]);
 	params.read(parmfile);
         continue;
       }

@@ -308,7 +308,7 @@ main(int argc, char *argv[])
         exit(1);
       }
       else{
-        sprintf(filename1, argv[i]);
+        strcpy(filename1, argv[i]);
         continue;
       }
     }
@@ -318,7 +318,7 @@ main(int argc, char *argv[])
         exit(1);
       }
       else{
-        sprintf(filename2, argv[i]);
+        strcpy(filename2, argv[i]);
         continue;
       }
     }
