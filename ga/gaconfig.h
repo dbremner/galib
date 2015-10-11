@@ -21,14 +21,6 @@ below for the pre-defined sets.  If you come up with a compiler/platform
 configuration that is not listed here, please send it to me so that i can 
 incorporate it into the code base.
 
-  GALIB_USE_ANSI_HEADERS
-
-                      Some operating systems/compilers have old-style headers
-                      (e.g. <iostream.h>) while others have new-school
-		      headers (e.g. <iostream>).  The default is to use
-		      ANSI headers.  If you are using an older compiler,
-		      make sure this variable is not defined.
-
   GALIB_USE_NAMED_TEMPLATES
   GALIB_USE_EMPTY_TEMPLATES
   GALIB_USE_COMP_OPERATOR_TEMPLATES
@@ -38,12 +30,6 @@ incorporate it into the code base.
 		      different ways of specifying templates.  And to make it
 		      even more complicated, some depend very much on the type
 		      of instantiation method that is defined.  Sigh.
-
-  GALIB_USE_STD_NAMESPACE
-
-                      Some platforms need to explicitly use the std namespace
-		      when referring to streams and other std components, but
-		      others do not.
 
   GALIB_USE_STREAMS
 
@@ -120,18 +106,12 @@ incorporate it into the code base.
 // determine the operating system
 #if defined(__linux__)
 #define GALIB_OS "linux"
-#elif defined(__sgi)
-#define GALIB_OS "irix"
 #elif defined(WIN32)
 #define GALIB_OS "win32"
 #elif defined(sun)
 #define GALIB_OS "solaris"
 #elif defined(__APPLE__) && defined(__MACH__) && defined(__ppc__)
 #define GALIB_OS "macosx"
-#elif defined(macintosh)
-#define GALIB_OS "macos"
-#elif defined(HPUX10)
-#define GALIB_OS "hpux10"
 #elif defined(HPUX11)
 #define GALIB_OS "hpux11"
 #elif defined(_AIX) || defined(AIX)
@@ -150,8 +130,6 @@ incorporate it into the code base.
 #define GALIB_CPU "ppc"
 #elif defined(__m68k__)
 #define GALIB_CPU "68k"
-#elif defined(__sgi)
-#define GALIB_CPU "mips"
 #elif defined(sparc) || defined(__sparc__)
 #define GALIB_CPU "sparc"
 #elif defined(__HP_aCC)
@@ -171,26 +149,6 @@ incorporate it into the code base.
 #else
 #define GALIB_COMPILER "gcc"
 #endif
-#elif defined(__BORLANDC__)
-#if __BORLANDC__ < 0x500
-#define GALIB_COMPILER "bcc4"
-#elif __BORLANDC__ < 0x530
-#define GALIB_COMPILER "bcc52"
-#elif __BORLANDC__ < 0x540
-#define GALIB_COMPILER "bcc53"
-#elif __BORLANDC__ < 0x550
-#define GALIB_COMPILER "bcc54"
-#elif __BORLANDC__ < 0x560
-#define GALIB_COMPILER "bcc55"
-#else
-#define GALIB_COMPILER "bcc"
-#endif
-#elif defined(__WATCOMC__)
-#define GALIB_COMPILER "watcom"
-#elif defined(_MIPS_SIM)
-#define GALIB_COMPILER "mipscc"
-#elif defined(__MWERKS__)
-#define GALIB_COMPILER "mwerks"
 #elif defined(_MSC_VER)
 #if _MSC_VER == 1300
 #define GALIB_COMPILER "vcpp7"
@@ -216,34 +174,6 @@ incorporate it into the code base.
 // ----------------------------------------------------------------------------
 
 // ----------------------------------------------------------------------------
-// Metrowerks' Codewarrior for MacOS, PalmOS, or Win32 (I have not tested CW
-// on other platforms yet).
-#if defined(__MWERKS__)
-#define GALIB_USE_STREAMS
-#if __option(RTTI)
-#define GALIB_USE_RTTI
-#endif
-
-
-// ----------------------------------------------------------------------------
-// Symantec C++ for mac.  This compiler does not handle templates very well, 
-// so if you want to use any of the template components of GAlib then you will
-// probably have to do some hacking to get things to work.
-#elif defined(__BORLANDC__)
-//#define GALIB_USE_RAND	// comment this if you're using a 32-bit OS
-#define GALIB_USE_RTTI
-#define GALIB_USE_STREAMS
-//#define GALIB_USE_PID
-#define GALIB_USE_EMPTY_TEMPLATES
-//#define GALIB_USE_ANSI_HEADERS
-//#define GALIB_USE_STD_NAMESPACE
-//#define GALIB_USE_COMP_OPERATOR_TEMPLATES
-
-//#pragma warning (disable : 8027)    // switch statements are not inlined
-//#pragma warning (disable : 8004)    // unused variable warnings are lame
-
-
-// ----------------------------------------------------------------------------
 // MicroSoft's Visual C++ programming environment.
 //
 // this has been test with:
@@ -252,7 +182,7 @@ incorporate it into the code base.
 //   vcpp7 (13.00.9466)
 //   vcpp7 (13.10.3077)
 //
-#elif defined(_MSC_VER)
+#if defined(_MSC_VER)
 // beware of using streams in an MFC application.  many nasties lurk therein...
 #define GALIB_USE_STREAMS
 // use the pid only on winnt and derivatives.  win95/98/ME do not have it.
@@ -298,21 +228,6 @@ incorporate it into the code base.
 
 
 // ----------------------------------------------------------------------------
-// irix 5.3 and irix 6.x
-#elif defined(__sgi)
-#define GALIB_USE_STREAMS
-#define GALIB_USE_PID
-
-#include <sgidefs.h>
-#if (_MIPS_SIM == _MIPS_SIM_NABI32)
-#define GALIB_USE_RTTI
-#elif (_MIPS_SIM == _MIPS_SIM_ABI64)
-#define GALIB_USE_RTTI
-#elif (_MIPS_SIM == _MIPS_SIM_ABI32)
-#endif
-
-
-// ----------------------------------------------------------------------------
 // IBM visual age c++ compiler
 #elif defined(__IBMCPP__)
 // the -qrtti option turns rtti on and off, but i do not know the
@@ -327,9 +242,7 @@ incorporate it into the code base.
 // HP aCC compiler
 #elif defined(__HP_aCC)
 #define GALIB_USE_RTTI
-//#define GALIB_USE_ANSI_HEADERS
 #define GALIB_USE_STREAMS
-//#define GALIB_USE_STD_NAMESPACE
 #define GALIB_USE_PID
 
 //#pragma disable warning 829 // do not care about string literal conversions
