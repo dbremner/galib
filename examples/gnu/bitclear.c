@@ -26,7 +26,7 @@ the executable file might be covered by the GNU General Public License. */
 #include "bitprims.h"
 
 void
-_BS_clear (register _BS_word *ptr,
+_BS_clear (_BS_word *ptr,
 	   int offset,
 	   _BS_size_t length)
 {

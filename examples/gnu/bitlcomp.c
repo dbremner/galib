@@ -31,14 +31,14 @@ the executable file might be covered by the GNU General Public License. */
    Both bitstrings must be left-aligned. */
 
 int
-_BS_lcompare_0 (register _BS_word *ptr0,
+_BS_lcompare_0 (_BS_word *ptr0,
 		_BS_size_t len0,
-		register _BS_word *ptr1,
+		_BS_word *ptr1,
 		_BS_size_t len1)
 {
   _BS_size_t nwords0 = len0 / _BS_BITS_PER_WORD;
   _BS_size_t nwords1 = len1 / _BS_BITS_PER_WORD;
-  register _BS_word word0, word1, mask;
+  _BS_word word0, word1, mask;
   _BS_size_t nwords = nwords0 > nwords1 ? nwords1 : nwords0;
   for (; nwords != 0; nwords--)
     {

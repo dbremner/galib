@@ -29,9 +29,9 @@ the executable file might be covered by the GNU General Public License. */
    This will work even if psrc & pdst overlap. */
 
 void
-_BS_xor (register _BS_word* pdst,
+_BS_xor (_BS_word* pdst,
 	 int dstbit,
-	 register const _BS_word* psrc,
+	 const _BS_word* psrc,
 	 int srcbit,
 	 _BS_size_t length)
 {
