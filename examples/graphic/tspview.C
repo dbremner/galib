@@ -684,14 +684,6 @@ GAListGenome<int>::write(ostream & os) const
 }
 
 
-// If your compiler does not do automatic instantiation (e.g. g++ 2.6.8),
-// then define the NO_AUTO_INST directive.
-#ifdef NO_AUTO_INST
-#include <ga/GAList.C>
-#include <ga/GAListGenome.C>
-template class GAList<int>;
-template class GAListGenome<int>;
-#endif
 
 
 

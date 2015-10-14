@@ -288,10 +288,6 @@ incorporate it into the code base.
 #endif
 
 
-// some compilers use one syntax, others use a different syntax.
-#define GALIB_INSTANTIATION_PREFIX template class
-
-
 // If no RNG has been selected, use the ran2 generator by default
 #if !defined(GALIB_USE_RAND) && \
     !defined(GALIB_USE_RANDOM) && \
