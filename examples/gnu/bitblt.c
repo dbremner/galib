@@ -67,7 +67,7 @@ _BS_blt (enum _BS_alu op,
     case _BS_alu_nor:
       ca1 = ONES; cx1 = ONES; ca2 = ONES; cx2 = ONES;
       break;
-    case_BS_alu_equiv:
+    case _BS_alu_equiv:
       ca1 = 0; cx1 = ONES; ca2 = ONES; cx2 = ONES;
       break;
     case _BS_alu_invert:
