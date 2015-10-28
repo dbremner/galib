@@ -277,10 +277,8 @@ Crossover(const GAGenome& g1, const GAGenome& g2, GAGenome* c1)
   GA1DArrayGenome<float>& dad = (GA1DArrayGenome<float>&)g2;
   GA1DArrayGenome<float>& child = (GA1DArrayGenome<float>&)*c1;
 
-  float distance = 0.0, midpoint = 0.0;
-
-  midpoint = (mom.gene(0) + dad.gene(0)) / 2;
-  distance = fabs(mom.gene(0) - dad.gene(0));
+  float midpoint = (mom.gene(0) + dad.gene(0)) / 2;
+  float distance = fabs(mom.gene(0) - dad.gene(0));
   child.gene(0, midpoint + distance * (GARandomFloat() - GARandomFloat()));
 
   return 1;

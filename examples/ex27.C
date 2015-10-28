@@ -358,7 +358,6 @@ Crossover(const GAGenome& g1,const GAGenome& g2,GAGenome* c1,GAGenome* c2){
 
   if(c1) {
     GA1DArrayGenome<float>& sis = (GA1DArrayGenome<float>&)*c1;
-    distance = midpoint = 0.0;
 
     midpoint = (mom.gene(0) + dad.gene(0)) / 2;
     distance = fabs(mom.gene(0) - dad.gene(0));
@@ -377,7 +376,6 @@ Crossover(const GAGenome& g1,const GAGenome& g2,GAGenome* c1,GAGenome* c2){
   }
   if(c2) {
     GA1DArrayGenome<float>& bro = (GA1DArrayGenome<float>&)*c2;
-    distance = midpoint = 0.0;
 
     midpoint = (mom.gene(0) + dad.gene(0)) / 2;
     distance = fabs(mom.gene(0) - dad.gene(0));
