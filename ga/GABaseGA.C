@@ -18,16 +18,16 @@
 
 // Here we assign the default values of the GAlib default parameters.
 int   gaDefNumGen           = 250;
-float gaDefPConv            = 0.99;
+float gaDefPConv            = 0.99f;
 int   gaDefNConv            = 20;
-float gaDefPMut             = 0.01;
-float gaDefPCross           = 0.90;
+float gaDefPMut             = 0.01f;
+float gaDefPCross           = 0.90f;
 int   gaDefPopSize          = 50;
 int   gaDefNPop             = 10;
-float gaDefPRepl            = 0.5;
+float gaDefPRepl            = 0.5f;
 int   gaDefNRepl            = 10;
 int   gaDefNumOff           = 2;
-float gaDefPMig             = 0.1;
+float gaDefPMig             = 0.1f;
 int   gaDefNMig             = 5;
 int   gaDefSelectScores     = GAStatistics::Maximum;
 int   gaDefMiniMaxi         = 1;

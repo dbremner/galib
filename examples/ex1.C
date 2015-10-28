@@ -45,8 +45,8 @@ main(int argc, char **argv)
   int height   = 5;
   int popsize  = 30;
   int ngen     = 400;
-  float pmut   = 0.001;
-  float pcross = 0.9;
+  float pmut   = 0.001f;
+  float pcross = 0.9f;
 
 // Now create the GA and run it.  First we create a genome of the type that
 // we want to use in the GA.  The ga doesn't operate on this genome in the
@@ -88,7 +88,7 @@ main(int argc, char **argv)
 float
 Objective(GAGenome& g) {
   GA2DBinaryStringGenome & genome = (GA2DBinaryStringGenome &)g;
-  float score=0.0;
+  float score=0.0f;
   int count=0;
   for(int i=0; i<genome.width(); i++){
     for(int j=0; j<genome.height(); j++){
