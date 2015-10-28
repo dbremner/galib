@@ -34,7 +34,7 @@ GASimpleGA::GASimpleGA(const GAPopulation& p) : GAGeneticAlgorithm(p){
   params.add(gaNelitism, gaSNelitism, GAParameter::BOOLEAN, &el);
 }
 GASimpleGA::GASimpleGA(const GASimpleGA& ga) : GAGeneticAlgorithm(ga){
-  oldPop = (GAPopulation *)0;
+  oldPop = nullptr;
   copy(ga);
 }
 GASimpleGA::~GASimpleGA(){
@@ -205,7 +205,7 @@ GASimpleGA::step()
 
     c1 = 0;
     if(GAFlipCoin(pCrossover())){
-      stats.numcro += (*scross)(*mom, *dad, &pop->individual(i), (GAGenome*)0);
+      stats.numcro += (*scross)(*mom, *dad, &pop->individual(i), nullptr);
       c1 = 1;
     }
     else{

@@ -49,18 +49,18 @@ GAStatistics::GAStatistics() {
   strcpy(scorefile, gaDefScoreFilename);
   which = Maximum;
 
-  boa = (GAPopulation *)0;
+  boa = nullptr;
 }
 GAStatistics::GAStatistics(const GAStatistics & orig){
-  cscore=(float *)0;
-  gen=(int *)0;
-  aveScore=(float *)0;
-  maxScore=(float *)0;
-  minScore=(float *)0;
-  devScore=(float *)0;
-  divScore=(float *)0;
-  scorefile=(char *)0;
-  boa=(GAPopulation *)0;
+  cscore=nullptr;
+  gen=nullptr;
+  aveScore=nullptr;
+  maxScore=nullptr;
+  minScore=nullptr;
+  devScore=nullptr;
+  divScore=nullptr;
+  scorefile=nullptr;
+  boa=nullptr;
   copy(orig);
 }
 GAStatistics::~GAStatistics(){
@@ -133,7 +133,7 @@ GAStatistics::copy(const GAStatistics & orig){
     scorefile = new char [strlen(orig.scorefile)+1];
     strcpy(scorefile, orig.scorefile);
   }
-  else scorefile = (char*)0;
+  else scorefile = nullptr;
 
   which = orig.which;
 
@@ -165,7 +165,7 @@ GAStatistics::copy(const GAStatistics & orig){
 void
 GAStatistics::
 updateBestIndividual(const GAPopulation & pop, GABoolean flag){
-  if(boa == (GAPopulation *)0 || boa->size() == 0) return; // do nothing
+  if(boa == nullptr || boa->size() == 0) return; // do nothing
   if(pop.order() != boa->order()) boa->order(pop.order());
 
   if(flag == gaTrue){		// reset the BOA array
@@ -381,9 +381,9 @@ int
 GAStatistics::nBestGenomes(const GAGenome& genome, unsigned int n){
   if(n == 0){
     delete boa;
-    boa = (GAPopulation*)0;
+    boa = nullptr;
   }
-  else if(boa == (GAPopulation*)0){
+  else if(boa == nullptr){
     boa = new GAPopulation(genome, n);
   }
   else {
@@ -430,17 +430,17 @@ GAStatistics::resizeScores(unsigned int n){
 
   if(n == 0){
     delete [] gen;
-    gen = (int*)0;
+    gen = nullptr;
     delete [] aveScore;
-    aveScore = (float*)0;
+    aveScore = nullptr;
     delete [] maxScore;
-    maxScore = (float*)0;
+    maxScore = nullptr;
     delete [] minScore;
-    minScore = (float*)0;
+    minScore = nullptr;
     delete [] devScore;
-    devScore = (float*)0;
+    devScore = nullptr;
     delete [] divScore;
-    divScore = (float*)0;
+    divScore = nullptr;
 
     nscrs = n;
   }

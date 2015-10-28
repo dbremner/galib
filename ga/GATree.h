@@ -115,7 +115,7 @@ public:
       return GATreeBASE::ERR;
     }
     iter.node = (t->rt ? t->rt : iter.node);
-    t->rt=(GANodeBASE *)0; t->iter.node=(GANodeBASE *)0;
+    t->rt=nullptr; t->iter.node=nullptr;
     return GATreeBASE::NO_ERR;
   }
   int insert(const T & t, GATreeBASE::Location where=GATreeBASE::BELOW){
@@ -141,7 +141,7 @@ public:
   T * youngest(){return iter.youngest();}
   T * warp(unsigned int i){return iter.warp(i);}
   T * warp(const GATreeIter<T> & i)
-    {return((i.tree == this) ? iter.warp(i) : (T *)0);}
+    {return((i.tree == this) ? iter.warp(i) : nullptr);}
   int nchildren(){return iter.nchildren();}
   int nsiblings(){return iter.nsiblings();}
 

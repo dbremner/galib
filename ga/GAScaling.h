@@ -239,10 +239,10 @@ public:
 
   GASharing(GAGenome::Comparator func, 
 	    float cut=gaDefSharingCutoff, float a=1.0)
-    { N=0; d=(float*)0; df=func; _sigma = cut; _alpha = a; _minmax = 0; }
+    { N=0; d=nullptr; df=func; _sigma = cut; _alpha = a; _minmax = 0; }
   GASharing(float cut=gaDefSharingCutoff, float a=1.0)
-    { N=0; d=(float*)0; df=0; _sigma = cut; _alpha = a; _minmax = 0; }
-  GASharing(const GASharing & arg) { N=0; d=(float*)0; copy(arg); }
+    { N=0; d=nullptr; df=0; _sigma = cut; _alpha = a; _minmax = 0; }
+  GASharing(const GASharing & arg) { N=0; d=nullptr; copy(arg); }
   GASharing & operator=(const GAScalingScheme & arg){copy(arg); return(*this);}
   virtual ~GASharing(){ delete [] d;}
   virtual GAScalingScheme * clone() const {return new GASharing(*this);}

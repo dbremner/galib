@@ -27,11 +27,11 @@ conditional makes it go from 7.5 seconds to 3.2 seconds (bm bl cs 1024 c 0.9)
 class GABinaryString {
 public:
   GABinaryString(unsigned int s){
-    csz=GA_BINSTR_CHUNKSIZE; sz=0; SZ=0; data=(GABit *)0;
+    csz=GA_BINSTR_CHUNKSIZE; sz=0; SZ=0; data=nullptr;
     resize(s);
   }
   GABinaryString(const GABinaryString& orig){
-    sz=0; SZ=0; data=(GABit *)0;
+    sz=0; SZ=0; data=nullptr;
     copy(orig);
   }
   virtual ~GABinaryString(){delete [] data;}

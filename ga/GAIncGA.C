@@ -55,8 +55,8 @@ GAIncrementalGA::GAIncrementalGA(const GAPopulation& p): GAGeneticAlgorithm(p){
 }
 GAIncrementalGA::GAIncrementalGA(const GAIncrementalGA& ga) :
 GAGeneticAlgorithm(ga){
-  child1 = (GAGenome *)0;
-  child2 = (GAGenome *)0;
+  child1 = nullptr;
+  child2 = nullptr;
   copy(ga);
 }
 GAIncrementalGA::~GAIncrementalGA(){
@@ -197,7 +197,7 @@ GAIncrementalGA::step()
   if(noffspr == 1){
     c1 = 0;
     if(GAFlipCoin(pCrossover())){
-      stats.numcro += (*scross)(*mom, *dad, child1, (GAGenome*)0);
+      stats.numcro += (*scross)(*mom, *dad, child1, nullptr);
       c1 = 1;
     }
     else{

@@ -79,7 +79,7 @@ public:
   enum Location {HEAD=0, TAIL, BEFORE, AFTER}; // values for 'where' to insert
   enum {NO_ERR=0, ERR= -1};		       // return codes
 
-  GAListBASE(){hd=(GANodeBASE *)0; sz=0; csz=0;}
+  GAListBASE(){hd=nullptr; sz=0; csz=0;}
   GAListBASE(GANodeBASE * n){hd=n; csz=1;}
   GANodeBASE * remove(GANodeBASE * n);
   int insert(GANodeBASE * n, GANodeBASE * idx, Location where=AFTER);
@@ -129,26 +129,26 @@ warp
 ---------------------------------------------------------------------------- */
 class GAListIterBASE {
 public:
-  GAListIterBASE(){node=(GANodeBASE *)0; list=(GAListBASE *)0;}
+  GAListIterBASE(){node=nullptr; list=nullptr;}
   GAListIterBASE(const GAListBASE & t){list = &t; node = t.hd;}
   GAListIterBASE(const GAListIterBASE & i){list = i.list; node = i.node;}
   void operator()(const GAListBASE & t){list = &t; node = t.hd;}
   GANodeBASE * current(GANodeBASE * c)
-    {return(c ? (node=c) : (GANodeBASE *)0);}
+    {return(c ? (node=c) : nullptr);}
   GANodeBASE * current(){return node;}
-  GANodeBASE * next(){return(node ? (node=node->next) : (GANodeBASE *)0);}
+  GANodeBASE * next(){return(node ? (node=node->next) : nullptr);}
   GANodeBASE * next(GANodeBASE * c)
-    {return(c ? (node=c->next) : (GANodeBASE *)0);}
-  GANodeBASE * prev(){return(node ? (node=node->prev) : (GANodeBASE *)0);}
+    {return(c ? (node=c->next) : nullptr);}
+  GANodeBASE * prev(){return(node ? (node=node->prev) : nullptr);}
   GANodeBASE * prev(GANodeBASE * c)
-    {return(c ? (node=c->prev) : (GANodeBASE *)0);}
-  GANodeBASE * head(){return(list ? (node=list->hd) : (GANodeBASE *)0);}
+    {return(c ? (node=c->prev) : nullptr);}
+  GANodeBASE * head(){return(list ? (node=list->hd) : nullptr);}
   GANodeBASE * tail()
-    {return((list && list->hd)?(node=list->hd->prev) : (GANodeBASE *)0);}
+    {return((list && list->hd)?(node=list->hd->prev) : nullptr);}
   GANodeBASE * warp(unsigned int);
   GANodeBASE * warp(const GAListIterBASE & i){
-    list=i.list; node=(GANodeBASE *)0;
-    return(i.node ? (node=i.node) : (GANodeBASE *)0);
+    list=i.list; node=nullptr;
+    return(i.node ? (node=i.node) : nullptr);
   }
   int size(){return(list ? list->size() : 0);}
 

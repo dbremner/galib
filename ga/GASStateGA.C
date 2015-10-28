@@ -58,7 +58,7 @@ GASteadyStateGA::GASteadyStateGA(const GAPopulation& p): GAGeneticAlgorithm(p){
 }
 GASteadyStateGA::GASteadyStateGA(const GASteadyStateGA& ga) : 
 GAGeneticAlgorithm(ga) {
-  tmpPop = (GAPopulation *)0;
+  tmpPop = nullptr;
   copy(ga);
 }
 GASteadyStateGA::~GASteadyStateGA(){
@@ -313,7 +313,7 @@ GASteadyStateGA::step()
     c1 = 0;
     if(GAFlipCoin(pCrossover())){
       stats.numcro += (*scross)(*mom, *dad,
-				&tmpPop->individual(i), (GAGenome*)0);
+				&tmpPop->individual(i), nullptr);
       c1 = 1;
     }
     else{

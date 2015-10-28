@@ -14,8 +14,8 @@
 
 class GAMask {
 public:
-  GAMask() { _n=0; _mask=(GA_MASK_TYPE*)0; }
-  GAMask(const GAMask& m) { _n=0; _mask=(GA_MASK_TYPE*)0; copy(m); }
+  GAMask() { _n=0; _mask=nullptr; }
+  GAMask(const GAMask& m) { _n=0; _mask=nullptr; copy(m); }
   GAMask& operator=(const GAMask& m) { copy(m); return *this; }
   ~GAMask() { delete [] _mask; }
   void copy(const GAMask& m) {

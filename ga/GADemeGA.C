@@ -384,7 +384,7 @@ GADemeGA::step() {
       c1 = 0;
       if(GAFlipCoin(pc)){
 	pstats[ii].numcro += 
-	  (*scross)(*mom, *dad, &tmppop->individual(i), (GAGenome*)0);
+	  (*scross)(*mom, *dad, &tmppop->individual(i), nullptr);
 	c1 = 1;
       }
       else{

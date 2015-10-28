@@ -351,7 +351,7 @@ GA3DArrayAlleleGenome<T>::
 GA3DArrayAlleleGenome(const GA3DArrayAlleleGenome<T> & orig) : 
 GA3DArrayGenome<T>(orig.nx, orig.ny, orig.nz) {
   naset = 0;
-  aset = (GAAlleleSet<T>*)0;
+  aset = nullptr;
   GA3DArrayAlleleGenome<T>::copy(orig);
 }
 

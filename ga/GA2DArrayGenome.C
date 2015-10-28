@@ -298,7 +298,7 @@ GA2DArrayAlleleGenome<T>::
 GA2DArrayAlleleGenome(const GA2DArrayAlleleGenome<T> & orig) : 
 GA2DArrayGenome<T>(orig.nx, orig.ny) {
   naset = 0;
-  aset = (GAAlleleSet<T>*)0;
+  aset = nullptr;
   GA2DArrayAlleleGenome<T>::copy(orig);
 }
 

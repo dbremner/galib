@@ -137,7 +137,7 @@ conversion using those bits.
 int
 GABinaryDecode(float& result, const GABit* bits, unsigned int nbits)
 {
-  if(bits == (GABit *)0 || nbits == 0){ result = 0.0; return 1; }
+  if(bits == nullptr || nbits == 0){ result = 0.0; return 1; }
   int status = GACheckDecoding(nbits);
 
   unsigned BITBASE maxint=1;
@@ -159,7 +159,7 @@ int
 GABinaryDecode(float& result, const GABit* bits,
 	       unsigned int nbits, float minval, float maxval)
 {
-  if(bits == (GABit *)0 || nbits == 0){ result = 0.0; return 1; }
+  if(bits == nullptr || nbits == 0){ result = 0.0; return 1; }
   int status = GACheckDecoding(nbits);
 
   unsigned BITBASE maxint=1;
@@ -188,7 +188,7 @@ could not represent it perfectly.
 int
 GABinaryEncode(unsigned BITBASE d, GABit * binstr, unsigned int nbits)
 {
-  if(binstr == (GABit *)0 || nbits == 0) return 1;
+  if(binstr == nullptr || nbits == 0) return 1;
   memset(binstr, 0, nbits*sizeof(GABit));
   return _GAEncodeBase(2, d, binstr, 0, nbits-1);
 }
@@ -222,7 +222,7 @@ int
 GABinaryEncode(float& val, GABit * binstr, unsigned int nbits,
 	       float minval, float maxval)
 {
-  if(binstr == (GABit *)NULL || nbits == 0) return 1;
+  if(binstr == nullptr || nbits == 0) return 1;
   if(val < minval || maxval < val) return 1;
 
   unsigned BITBASE nintervals = 1;
@@ -251,7 +251,7 @@ int
 GAGrayDecode(float& value, const GABit* bits, unsigned int nbits, 
 	     float minval, float maxval) 
 {
-  if(bits == (GABit *)0 || nbits == 0){ value = 0.0; return 1; }
+  if(bits == nullptr || nbits == 0){ value = 0.0; return 1; }
   int status = GACheckDecoding(nbits);
 
   unsigned BITBASE gray = 0;
@@ -276,7 +276,7 @@ int
 GAGrayEncode(float& value, GABit* bits, unsigned int nbits, 
 	     float minval, float maxval) 
 {
-  if(bits == (GABit *)NULL || nbits == 0) return 1;
+  if(bits == nullptr || nbits == 0) return 1;
   if(value < minval || maxval < value) return 1;
 
   unsigned BITBASE nintervals = 1;

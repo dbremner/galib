@@ -105,9 +105,9 @@ public:
 
   GARouletteWheelSelector(int w=GASelectionScheme::SCALED) : 
   GASelectionScheme(w) 
-    { psum = (float*)0; n = 0; }
+    { psum = nullptr; n = 0; }
   GARouletteWheelSelector(const GARouletteWheelSelector& orig) 
-    { psum = (float*)0; n = 0; copy(orig); }
+    { psum = nullptr; n = 0; copy(orig); }
   GARouletteWheelSelector& operator=(const GASelectionScheme& orig) 
     { if(&orig != this) copy(orig); return *this; }
   virtual ~GARouletteWheelSelector() { delete [] psum; }
@@ -186,9 +186,9 @@ public:
   GADefineIdentity("GASRSSelector", GAID::SRSSelection);
 
   GASRSSelector(int w=GASelectionScheme::SCALED) : GASelectionScheme(w)
-    { fraction = (float*)0; choices = (unsigned int *)0; n = 0; }
+    { fraction = nullptr; choices = nullptr; n = 0; }
   GASRSSelector(const GASRSSelector& orig)
-    { fraction = (float*)0; choices = (unsigned int *)0; n = 0; copy(orig); }
+    { fraction = nullptr; choices = nullptr; n = 0; copy(orig); }
   GASRSSelector& operator=(const GASelectionScheme& orig) 
     { if(&orig != this) copy(orig); return *this; }
   virtual ~GASRSSelector() { delete [] fraction; delete [] choices; }
@@ -223,15 +223,15 @@ public:
   GADefineIdentity("GADSSelector", GAID::DSSelection);
 
   GADSSelector(int w=GASelectionScheme::SCALED) : GASelectionScheme(w) {
-    fraction = (float*)0;
-    choices = (unsigned int *)0; 
-    idx = (unsigned int *)0; 
+    fraction = nullptr;
+    choices = nullptr; 
+    idx = nullptr; 
     n = 0; 
   }
   GADSSelector(const GADSSelector& orig) { 
-    fraction = (float*)0; 
-    choices = (unsigned int *)0; 
-    idx = (unsigned int *)0; 
+    fraction = nullptr; 
+    choices = nullptr; 
+    idx = nullptr; 
     n = 0; 
     copy(orig); 
   }

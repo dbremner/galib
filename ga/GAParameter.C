@@ -33,13 +33,13 @@ GAParameter::GAParameter(const char* fn, const char* sn,
     fname = new char[strlen(fn)+1];
     strcpy(fname, fn);
   }
-  else fname = (char*)0;
+  else fname = nullptr;
 
   if(sn){
     sname = new char[strlen(sn)+1];
     strcpy(sname, sn);
   }
-  else sname = (char*)0;
+  else sname = nullptr;
 
   t = tp;
   memset(&val, 0, sizeof(Value));
@@ -47,7 +47,7 @@ GAParameter::GAParameter(const char* fn, const char* sn,
 }
 
 GAParameter::GAParameter(const GAParameter& orig){
-  fname=sname = (char*)0; 
+  fname=sname = nullptr; 
   memset(&val, 0, sizeof(Value));
   copy(orig);
 }
@@ -62,12 +62,12 @@ GAParameter::copy(const GAParameter& orig){
     fname = new char[strlen(orig.fname)+1];
     strcpy(fname, orig.fname);
   }
-  else fname = (char *)0;
+  else fname = nullptr;
   if(orig.sname){
     sname = new char[strlen(orig.sname)+1];
     strcpy(sname, orig.sname);
   }
-  else sname = (char *)0;
+  else sname = nullptr;
 
   t = orig.t;
   setvalue(orig.value());	// do this directly...
@@ -123,7 +123,7 @@ GAParameter::setvalue(const void* v){
 // don't allocate any parameters at this point.
 GAParameterList::GAParameterList(){
   N = n = cur = 0;
-  p = (GAParameter**)0;
+  p = nullptr;
 }
 
 GAParameterList::GAParameterList(const GAParameterList& list){
@@ -288,7 +288,7 @@ GAParameterList::operator()(const char* name){
   for(unsigned int i=0; i<n; i++)
     if(strcmp(name, p[i]->fullname())==0 || strcmp(name, p[i]->shrtname())==0)
       return p[i];
-  return (GAParameter*)0;
+  return nullptr;
 }
 
 

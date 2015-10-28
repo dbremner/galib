@@ -32,7 +32,7 @@ class GAArray {
 public:
   GAArray(unsigned int s) : sz(s), a(sz ? new T[sz] : 0)
     {for(unsigned int i=0; i<sz; i++) a[i] = (T)0; }
-  GAArray(const GAArray<T> & orig){sz=0; a=(T *)0; copy(orig);}
+  GAArray(const GAArray<T> & orig){sz=0; a=nullptr; copy(orig);}
   GAArray<T> & operator=(const GAArray<T> & orig){copy(orig); return *this;}
   GAArray<T> & operator=(const T array []) // no err checks!
     {for(unsigned int i=0; i<sz; i++) a[i] = *(array+i); return *this;}

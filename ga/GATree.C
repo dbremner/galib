@@ -33,7 +33,7 @@ template <class T>
 GATree<T>::~GATree()
 {
   _GATreeDestroy(DYN_CAST(GANode<T>*, rt));
-  iter.node = (GANodeBASE *)0;
+  iter.node = nullptr;
 }
 
 
@@ -106,7 +106,7 @@ GATree<T>::clone(unsigned int i) const
   newnode->child = _GATreeCopy(DYN_CAST(GANode<T>*, node->child), newnode);
   if(newnode->child) newnode->child->parent = newnode;
 
-  t->insert(newnode, (GANode<T> *)0, GATreeBASE::ROOT);
+  t->insert(newnode, nullptr, GATreeBASE::ROOT);
 
   return t;
 }
@@ -133,7 +133,7 @@ GATree<T>::destroy()
   if(!node) return GATreeBASE::NO_ERR;
   if(node->prev == node || !node->prev)
     if(node->parent) iter.node = node->parent;
-    else iter.node = (GANodeBASE *)0;
+    else iter.node = nullptr;
   else 
     iter.eldest();
   _GATreeDestroy(DYN_CAST(GANode<T>*, node->child));
@@ -184,7 +184,7 @@ GATree<T>::swaptree(GATree<T> * t)
       tmp = GATreeBASE::remove(iter.node);
 //      tmp->next = tmp;
 //      tmp->prev = tmp;
-      iter.node = (GANodeBASE *)0;
+      iter.node = nullptr;
       if(t->insert(DYN_CAST(GANode<T>*,tmp),(GANode<T>*)0,GATreeBASE::ROOT) ==
 	 GATreeBASE::ERR)
 	return GATreeBASE::ERR;
@@ -239,13 +239,13 @@ Recursive routines for the Tree objects
 template <class T> GANode<T> *
 _GATreeCopy(GANode<T> * node, GANode<T> * parent)
 {
-  if(!node) return (GANode<T> *)0;
+  if(!node) return nullptr;
 
   GANode<T> * newnode = new GANode<T>(node->contents);
   newnode->parent = parent;
   newnode->child = _GATreeCopy(DYN_CAST(GANode<T>*, node->child), newnode);
 
-  GANode<T> *lasttmp = newnode, *newtmp = (GANode<T> *)0;
+  GANode<T> *lasttmp = newnode, *newtmp = nullptr;
   GANode<T> *tmp = DYN_CAST(GANode<T>*, node->next);
   while(tmp && tmp != node){
     newtmp = new GANode<T>(tmp->contents);
@@ -280,7 +280,7 @@ _GATreeDestroy(GANode<T> * node)
   if(!node) return;
 
   if(node->parent)
-    node->parent->child = (GANodeBASE *)0;
+    node->parent->child = nullptr;
   _GATreeDestroy(DYN_CAST(GANode<T>*, node->child));
 
   GANodeBASE * tmp;

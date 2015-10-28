@@ -77,8 +77,8 @@ GAPopulation::GAPopulation() {
   slct = new DEFAULT_SELECTOR;
   slct->assign(*this);
   sclscm = new DEFAULT_SCALING;
-  evaldata = (GAEvalData*)0;
-  ga = (GAGeneticAlgorithm*)0;
+  evaldata = nullptr;
+  ga = nullptr;
 }
 
 GAPopulation::GAPopulation(const GAGenome & c, unsigned int popsize) {
@@ -106,17 +106,17 @@ GAPopulation::GAPopulation(const GAGenome & c, unsigned int popsize) {
   slct = new DEFAULT_SELECTOR;
   slct->assign(*this);
   sclscm = new DEFAULT_SCALING;
-  evaldata = (GAEvalData*)0;
-  ga = (GAGeneticAlgorithm*)0;
+  evaldata = nullptr;
+  ga = nullptr;
 }
 
 GAPopulation::GAPopulation(const GAPopulation & orig){
   n = N = 0;
-  rind = sind = (GAGenome**)0;
-  indDiv = (float*)0;
-  sclscm = (GAScalingScheme*)0; 
-  slct = (GASelectionScheme*)0;
-  evaldata = (GAEvalData*)0;
+  rind = sind = nullptr;
+  indDiv = nullptr;
+  sclscm = nullptr; 
+  slct = nullptr;
+  evaldata = nullptr;
   copy(orig);
 }
 
@@ -173,7 +173,7 @@ GAPopulation::copy(const GAPopulation & arg)
   if(arg.selectready == gaTrue) prepselect();
 
   if(arg.evaldata) evaldata = arg.evaldata->clone();
-  else evaldata = (GAEvalData*)0;
+  else evaldata = nullptr;
 
   neval = 0;			// don't copy the evaluation count!
   rawSum = arg.rawSum; rawAve = arg.rawAve; 
@@ -544,8 +544,8 @@ GAGenome *
 GAPopulation::replace(GAGenome * repl, int which, SortBasis basis)
 {
   int i=-1;
-  GAGenome * orig=(GAGenome *)0;
-  if(repl == (GAGenome *)0) return orig;
+  GAGenome * orig=nullptr;
+  if(repl == nullptr) return orig;
 
   switch(which){
   case BEST:
@@ -612,8 +612,8 @@ GAPopulation::replace(GAGenome * repl, int which, SortBasis basis)
 GAGenome *
 GAPopulation::replace(GAGenome * r, GAGenome * o)
 {
-  GAGenome * orig=(GAGenome *)0;
-  if(r == (GAGenome *)0 || o == (GAGenome *)0) return orig;
+  GAGenome * orig=nullptr;
+  if(r == nullptr || o == nullptr) return orig;
   if(r == o) return r;
   unsigned int i;
   for(i=0; i<n && rind[i] != o; i++);
@@ -631,7 +631,7 @@ GAPopulation::replace(GAGenome * r, GAGenome * o)
 GAGenome *
 GAPopulation::remove(int i, SortBasis basis)
 {
-  GAGenome * removed=(GAGenome *)0;
+  GAGenome * removed=nullptr;
   if(i == BEST) { sort(gaFalse, basis); i = 0; }
   else if(i == WORST) { sort(gaFalse, basis); i = n-1; }
   else if(i == RANDOM) i = GARandomInt(0,n-1);
@@ -668,8 +668,8 @@ GAPopulation::remove(int i, SortBasis basis)
 GAGenome *
 GAPopulation::remove(GAGenome * r)
 {
-  GAGenome * removed=(GAGenome *)0;
-  if(r == (GAGenome *)0) return removed;
+  GAGenome * removed=nullptr;
+  if(r == nullptr) return removed;
   unsigned int i;
   for(i=0; i<n && rind[i] != r; i++);
   if(i < n) removed = remove(i, RAW);
@@ -701,7 +701,7 @@ GAPopulation::add(const GAGenome& g)
 GAGenome*
 GAPopulation::add(GAGenome* c)
 {
-  if(c == (GAGenome *)0) return c;
+  if(c == nullptr) return c;
   grow(n+1);
   rind[n] = sind[n] = c;
   if(ga) rind[n]->geneticAlgorithm(*ga);

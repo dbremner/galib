@@ -30,7 +30,7 @@ template <class T>
 GAList<T>::~GAList()
 {
   while(hd) delete GAListBASE::remove(DYN_CAST(GANode<T>*, hd));
-  iter.node = (GANodeBASE *)0;
+  iter.node = nullptr;
 }
 
 
@@ -61,10 +61,10 @@ template <class T> T *
 GAList<T>::remove()
 {
   GANode<T> * node = DYN_CAST(GANode<T>*, iter.node);
-  if(!node) return (T *)0;
+  if(!node) return nullptr;
 
   if(node->prev != node) iter.node = node->prev;
-  else iter.node = (GANodeBASE *)0;
+  else iter.node = nullptr;
   node = DYN_CAST(GANode<T>*, GAListBASE::remove(node));
   T * contents = new T(node->contents);
   delete node;
@@ -89,7 +89,7 @@ GAList<T>::clone(unsigned int i) const
 
   GANode<T> * newnode = _GAListCopy(node, DYN_CAST(GANode<T>*, hd));
 
-  t->insert(newnode, (GANode<T> *)0, GAListBASE::HEAD);
+  t->insert(newnode, nullptr, GAListBASE::HEAD);
 
 // need to set iterator to right spot in the clone!!  for now its at the head
 
@@ -111,7 +111,7 @@ GAList<T>::destroy()
     if(hd == node) iter.node = node->next;
     else iter.node = node->prev;
   else
-    iter.node = (GANodeBASE *)0;
+    iter.node = nullptr;
   delete GAListBASE::remove(node);
   return GAListBASE::NO_ERR;
 }
@@ -124,7 +124,7 @@ GAList<T>::swap(unsigned int a, unsigned int b)
 {
   if(a == b || a > (unsigned int)size() || b > (unsigned int)size())
     return GAListBASE::NO_ERR;
-  GANodeBASE *tmp=hd, *anode=(GANodeBASE *)0, *bnode=(GANodeBASE *)0;
+  GANodeBASE *tmp=hd, *anode=nullptr, *bnode=nullptr;
   unsigned int cur=0;
   while(tmp && tmp->next != hd){
     if(a == cur) anode = tmp;
@@ -149,9 +149,9 @@ Utility routines for the List objects
 template <class T> GANode<T> *
 _GAListCopy(GANode<T> * node, GANode<T> * head)
 {
-  if(!node) return (GANode<T> *)0;
+  if(!node) return nullptr;
   GANode<T> *newnode = new GANode<T>(node->contents);
-  GANode<T> *lasttmp = newnode, *newtmp = (GANode<T> *)0;
+  GANode<T> *lasttmp = newnode, *newtmp = nullptr;
   GANode<T> *tmp = DYN_CAST(GANode<T>*, node->next);
   while(tmp && tmp != head){
     newtmp = new GANode<T>(tmp->contents);

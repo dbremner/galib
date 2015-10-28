@@ -252,7 +252,7 @@ GA1DArrayAlleleGenome<T>::
 GA1DArrayAlleleGenome(const GA1DArrayAlleleGenome<T>& orig) : 
 GA1DArrayGenome<T>(orig.sz) {
   naset = 0;
-  aset = (GAAlleleSet<T>*)0;
+  aset = nullptr;
   GA1DArrayAlleleGenome<T>::copy(orig);
 }
 
