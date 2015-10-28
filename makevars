@@ -32,11 +32,21 @@ RM          = rm -rf
 #  verified 06mar07 on linux-x86 (ubuntu with gcc 4.0.3)
 #  verified 06mar07 on macosx-ppc (macosx 10.4.8 with gcc 4.0.1)
 CXX         = g++
-CXXFLAGS    = -g -Wall
+CXXFLAGS    = -g -Wall -Wextra -pedantic -std=c++11
 LD          = g++ -w
 AR          = ar rv
 INSTALL     = install -c
 RANLIB      = echo no ranlib
+
+#FIXME, reenable some if not all of these
+#CXX         = clang++
+#CXXFLAGS    = -g  -Wold-style-cast -std=c++11 #-Weverything #-Wno-old-style-cast -Wno-padded \
+#-Wno-extra-semi -Wno-sign-conversion -std=c++11 \
+#-Wno-disabled-macro-expansion -Wno-weak-vtables
+#LD          = clang++ -w
+#AR          = ar rv
+#INSTALL     = install -c
+#RANLIB      = echo no ranlib
 
 # gcc2
 #  verified 28dec04 on linux-x86 (redhat 6.2 with gcc 2.95.2)
